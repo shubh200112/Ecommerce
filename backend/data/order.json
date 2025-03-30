@@ -1,0 +1,62 @@
+[{
+    "shippingInfo": {
+      "address": "123 Main St",
+      "city": "New York",
+      "phoneNo": "1234567890",
+      "postalCode": "10001",
+      "country": "USA",
+      "landMark": "Near Central Park"
+    },
+    "user": "660a1b2c3d4e5f67890abcd1",
+    "orderItems": [
+      {
+        "name": "Laptop",
+        "quantity": "1",
+        "image": "laptop.jpg",
+        "price": "1200",
+        "product": "660a1b2c3d4e5f67890abcd2"
+      }
+    ],
+    "paymentInfo": {
+      "id": "pi_123456789",
+      "status": "Paid"
+    },
+    "paidAt": "2025-03-28T10:00:00Z",
+    "itemsPrice": 1200,
+    "taxPrice": 100,
+    "shippingPrice": 20,
+    "totalPrice": 1320,
+    "orderStatus": "Shipped",
+    "deliveredAt": "2025-04-02T15:30:00Z"
+  },
+  {
+    "shippingInfo": {
+      "address": "456 Elm St",
+      "city": "Los Angeles",
+      "phoneNo": "9876543210",
+      "postalCode": "90001",
+      "country": "USA",
+      "landMark": "Near Hollywood Blvd"
+    },
+    "user": "660a1b2c3d4e5f67890abcd3",
+    "orderItems": [
+      {
+        "name": "Smartphone",
+        "quantity": "2",
+        "image": "phone.jpg",
+        "price": "800",
+        "product": "660a1b2c3d4e5f67890abcd4"
+      }
+    ],
+    "paymentInfo": {
+      "id": "pi_987654321",
+      "status": "Pending"
+    },
+    "paidAt": "2025-03-27T12:00:00Z",
+    "itemsPrice": 1600,
+    "taxPrice": 120,
+    "shippingPrice": 25,
+    "totalPrice": 1745,
+    "orderStatus": "Processing",
+    "deliveredAt": null
+  }]

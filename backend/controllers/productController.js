@@ -9,7 +9,12 @@ exports.getProducts = catchAsyncErrors(
    
     const resPerPage = 4;
 
-    const apiFeatures =  new APIFeatures(Product.find() , req.query).search().filter().pagination(resPerPage)
+    const apiFeatures =  new APIFeatures(Product.find() , req.query).search().filter()  //.pagination(resPerPage)
+    
+    if (apiFeatures.pagination) {
+    apiFeatures.pagination(resPerPage);
+}
+
     const getAllProducts = await apiFeatures.query
 
     return res.status(200).json({
@@ -40,6 +45,8 @@ exports.getSingleProduct = catchAsyncErrors(
 //Create new Product => /api/v1/admin/product/new [POST]
 exports.newProduct = catchAsyncErrors(
     async (req, res, next) => {
+
+        req.body.user = req.user.id
     try {
       // Validate required fields before creating product
       // Create product in database
@@ -70,7 +77,7 @@ exports.upadateProduct = catchAsyncErrors(
         return next(new ErrorHandler('Product Not found' , 404))
     }
 
-    product = await Product.findByIdAndUpdate(req.prarams.id ,req.body , {
+    product = await Product.findByIdAndUpdate(req.params.id ,req.body , {
         new: true,
         runValidators:true,
         useFindAndModify: false

@@ -23,7 +23,7 @@ class APIFeatures {
 
         //Remmoving fields from query 
         const removeFields = ['keyword','limit','page']
-        removeFields.forEach(e1 = delete queryCopy[e1])
+        removeFields.forEach((param) => delete queryCopy[param])
 
         // console.log(queryCopy);
 
@@ -32,7 +32,7 @@ class APIFeatures {
         queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, match => `$${match}`)
     
         this.query = this.query.find(JSON.parse(queryStr))
-        return 
+        return this;
     }
 
     pagination(resPerPage) {

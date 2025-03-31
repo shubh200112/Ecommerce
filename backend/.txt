@@ -1,0 +1,18 @@
+const reviewSchema = new mongoose.Schema({
+    user: { 
+        type: String, 
+        required: [true, 'Review must have a user ID']
+    },
+    name: { 
+        type: String, 
+        required: [true, 'Review must have a name']
+    },
+    rating: { 
+        type: Number, 
+        required: [true, 'Review must have a rating']
+    },
+    comment: { 
+        type: String, 
+        required: [true, 'Review must have a comment']
+    }
+});

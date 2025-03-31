@@ -6,7 +6,7 @@ const ErrorHandler = require('../utils/errorHandler')
 const catchAsyncErrors = require('../middlewares/catchAsyncErrors')
 const { render } = require('../app')
 
-//Create a new ordeer => /api/v1/order/new
+//Create a new ordeer => /api/v1/order/new [post]
 exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     const {
         orderItems,
@@ -46,7 +46,7 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
-// Get single order => /api/v1/order/:id
+// Get single order => /api/v1/order/:id [get]
 exports.getSingleOrder = catchAsyncErrors(
     async (req , res ,next) => {
         const order = await Order.findById(req.params.id).populate('user', 'name email')
@@ -62,7 +62,7 @@ exports.getSingleOrder = catchAsyncErrors(
 
     }
 )
-// Get all orders => /api/orders/me
+// Get all orders => /api/orders/me [get]
 exports.myOrder = catchAsyncErrors(
     async (req , res ,next) => {
         const orders = await Order.find({
@@ -78,7 +78,7 @@ exports.myOrder = catchAsyncErrors(
 )
 // ADMIN
 
-//Get all orders - ADMIN => /api/v1/admin/orders
+//Get all orders - ADMIN => /api/v1/admin/orders [get]
 exports.allOrders = catchAsyncErrors(
     async (req , res ,next) => {
         const orders = await Order.find()
@@ -98,7 +98,7 @@ exports.allOrders = catchAsyncErrors(
     }
 )
 
-// update / Process order - ADMIN => /api/v1/admin/order/:id
+// update / Process order - ADMIN => /api/v1/admin/order/:idm [Put]
 exports.updateOrder = catchAsyncErrors(
     async (req , res ,next) => {
         const order = await Order.findById(req.params.id)

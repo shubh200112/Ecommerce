@@ -1,23 +1,5 @@
 const mongoose = require('mongoose');
-
-const reviewSchema = new mongoose.Schema({
-    user: { 
-        type: String, 
-        required: [true, 'Review must have a user ID']
-    },
-    name: { 
-        type: String, 
-        required: [true, 'Review must have a name']
-    },
-    rating: { 
-        type: Number, 
-        required: [true, 'Review must have a rating']
-    },
-    comment: { 
-        type: String, 
-        required: [true, 'Review must have a comment']
-    }
-});
+const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
 
 const productSchema = new mongoose.Schema({
     name: {
@@ -87,7 +69,25 @@ const productSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    reviews: [reviewSchema],
+    reviews: [{
+        user:{
+            type: mongoose.Schema.ObjectId,
+            ref : 'user',
+            required: true
+        },
+        name:{
+            type: String,
+            required : true
+        },
+        rating: {
+            type: Number,
+            required: true
+        },
+        comment: {
+                type: String,
+                required: true 
+        }
+    }],
     createdAt: {
         type: Date,
         default: Date.now
@@ -98,5 +98,7 @@ const productSchema = new mongoose.Schema({
         required: true
     }
 });
+
+
 
 module.exports = mongoose.model('Product', productSchema);
